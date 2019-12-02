@@ -1,0 +1,12 @@
+.entry_container {
+    background-color: rgb(253, 214, 214);
+    padding : 10px 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.links_list{
+    background-color:rgb(200, 255, 241);
+    border-radius: 10px;
+    margin-top: 10px;
+}
