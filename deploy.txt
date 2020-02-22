@@ -1,3 +1,6 @@
 # use the following script to deploy
 
 npm run deploy
+
+
+#copied from https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48
