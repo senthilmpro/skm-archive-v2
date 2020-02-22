@@ -41,6 +41,7 @@ export default class PostList extends React.Component {
             listRender = files.map((x, i) => <li key={i}><a href={x}>{fileName(x)}</a></li>);
         }
         
+        let goToProfile
 
         return (
             <div style={{ width: '100%' }} className="entry_container">
