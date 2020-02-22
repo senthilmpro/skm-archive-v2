@@ -23,12 +23,15 @@ export default class ArchiveService {
         let server = obj.server;
         let dir = obj.dir;
         let files = obj.files;
-
-        let newFiles = files.filter(x => ignoredFormats.indexOf(x.format) == -1).filter(x => x.source == 'original');
-        newFiles = newFiles.map(x => {
-            let fileUrl = `https://${server}${dir}/${x.name}`;
-            return fileUrl;
-        });
+        let newFiles = [];
+        if(files && files.length > 0){
+            newFiles = files.filter(x => ignoredFormats.indexOf(x.format) === -1).filter(x => x.source === 'original');
+            newFiles = newFiles.map(x => {
+                let fileUrl = `https://${server}${dir}/${x.name}`;
+                return fileUrl;
+            });
+        }
+        
         
         return newFiles;
     }

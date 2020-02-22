@@ -40,19 +40,18 @@ export default class PostList extends React.Component {
         } else {
             listRender = files.map((x, i) => <li key={i}><a href={x}>{fileName(x)}</a></li>);
         }
+        
 
         return (
             <div style={{ width: '100%' }} className="entry_container">
                 <h3>{title}</h3>
                 <span>File count </span> : <b>{fileCount}</b>
-                <button onClick={this.hideLinks} style={{"marginLeft" : "10px"}} className={["btn", "btn-primary"].join(" ")}>Show Links</button>
+                <button onClick={this.hideLinks} style={{"marginLeft" : "10px"}, {"display" : fileCount > 0 ? "block" : "none"}} className={["btn", "btn-primary"].join(" ")}>Show Links</button>
                 <div style={{ "display": displayLink  }}>
                     <ul className="links_list">
                         {listRender}
                     </ul>
                 </div>
-
-
             </div>
         )
 
