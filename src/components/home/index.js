@@ -1,8 +1,8 @@
 import React from 'react';
 import FetchService from '../../services/fetch-service';
 import ArchiveService from '../../services/archive-service';
-import PostList from '../post-list';
 import './Home.css';
+import PostList from '../post-list/PostList';
 
 
 export default class HomeComponent extends React.Component {
