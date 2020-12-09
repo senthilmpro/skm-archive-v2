@@ -4,4 +4,5 @@
 
 .list_box {
     list-style: none;
+    padding-inline-start: 10px;
 }

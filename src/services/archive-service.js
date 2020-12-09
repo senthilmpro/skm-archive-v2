@@ -35,4 +35,10 @@ export default class ArchiveService {
         
         return newFiles;
     }
+
+    static getDownloadUrl(obj){
+        let identifier = obj.metadata && obj.metadata.identifier;
+        return `https://archive.org/download/${identifier}`;
+    }
+
 }

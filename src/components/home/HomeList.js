@@ -9,6 +9,7 @@ export default function HomeComponent() {
     const [data, setData] = useState([]);
     const [postsFound, setPostsFound] = useState(false);
     const [showLinks, setshowLinks] = useState(true);
+    const [showDL, setShowDL] = useState(false);
 
     const getWpData = async () => {
         setLoading(true);
@@ -19,12 +20,15 @@ export default function HomeComponent() {
             return x.data
         });
 
+        console.log("Archive Data : ", archiveData)
+
         let postsArr = [];
         archiveData.forEach((x, i) => {
             let obj = {
                 title: wpData.posts[i].title,
                 files: ArchiveService.getFileUrl(x),
-                isDark: x.is_dark ? x.is_dark : false
+                isDark: !!x.is_dark,
+                url: ArchiveService.getDownloadUrl(x)
             };
             if (!obj.isDark) {
                 postsArr.push(obj);
@@ -43,8 +47,10 @@ export default function HomeComponent() {
 
     const showFullLinks = () => setshowLinks(c => !c);
 
+    const showDLButton = () => setShowDL(c => !c);
+
     const posts = data;
-    const filesRender = posts.map(x => <li><PostList files={x.files} title={x.title} showLinks={showLinks} /></li>);
+    const filesRender = posts.map(x => <li><PostList files={x.files} title={x.title} showLinks={showLinks} url={x.url} showDL={showDL} /></li>);
 
     useEffect(() => {
         getWpData();
@@ -63,6 +69,7 @@ export default function HomeComponent() {
                         <div>
                             <h2>Archive Link Checker v2</h2>
                             <label>Show Links : </label> <input type="checkbox" onChange={showFullLinks} checked={showLinks} />
+                            <label>Show DL : </label> <input type="checkbox" onChange={showDLButton} checked={showDL} />
                             <div style={{ width: '95%', paddingTop: "45px" }}>
                                 <ul className="list_box">
                                     {filesRender}

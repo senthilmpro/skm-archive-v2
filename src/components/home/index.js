@@ -30,6 +30,8 @@ export default class HomeComponent extends React.Component {
             return x.data
         });
 
+       
+
         let postsArr = [];
         archiveData.forEach((x, i) => {
             let obj = {
