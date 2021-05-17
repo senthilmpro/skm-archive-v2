@@ -24,7 +24,13 @@ export default class HomeComponent extends React.Component {
             loading : true
         });
         let wpData = await FetchService.fetchWordpress();
-        let archiveResponse = await FetchService.fetchArchiveUrl(wpData.posts);
+        let posts = wpData.posts;
+        posts.forEach(x => {
+            let protocol = new URL(x.title).protocol;
+            console.log(protocol);
+        })
+        posts = posts.filter(x => (new URL(x.title).protocol !== "http:"));
+        let archiveResponse = await FetchService.fetchArchiveUrl(posts);
         console.log("archiveResponse ", archiveResponse);
         let archiveData = archiveResponse.map(x => {
             return x.data
@@ -33,7 +39,7 @@ export default class HomeComponent extends React.Component {
         let postsArr = [];
         archiveData.forEach((x, i) => {
             let obj = {
-                title: wpData.posts[i].title,
+                title: posts[i].title,
                 files: ArchiveService.getFileUrl(x),
                 isDark : x.is_dark ? x.is_dark : false
             };

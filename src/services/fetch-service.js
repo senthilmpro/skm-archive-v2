@@ -3,6 +3,12 @@ import axios from 'axios';
 export default class FetchService {
     
     static async fetchWordpress(){
+        let obj = {
+            url: "dumppro.wordpress.com",
+            number: 10,
+            email: 'm.senthil.000@gmail.com'
+        }
+
         let site = 'dumppro.wordpress.com';
         let number = 10;
         let baseUrl = `https://public-api.wordpress.com/rest/v1.1/sites/${site}/posts?number=${number}&fields=title`;
