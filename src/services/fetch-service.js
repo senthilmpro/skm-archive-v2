@@ -13,6 +13,7 @@ export default class FetchService {
     static async fetchArchiveUrl(arr){
         let promiseArr = arr.map(x => {
             let title = this.getArchiveUrlLink(x.title);
+            console.log("TITLE: ", title);
             return axios.get(title);
         });
         return axios.all(promiseArr);

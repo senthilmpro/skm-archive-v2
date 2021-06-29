@@ -24,6 +24,7 @@ export default class HomeComponent extends React.Component {
             loading : true
         });
         let wpData = await FetchService.fetchWordpress();
+        console.log("wpData ", wpData);
         let archiveResponse = await FetchService.fetchArchiveUrl(wpData.posts);
         console.log("archiveResponse ", archiveResponse);
         let archiveData = archiveResponse.map(x => {
